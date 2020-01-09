@@ -1,0 +1,5 @@
+The programs in this folder are from a course named Advanced Programming.
+Assignment is abbreviated as assg for brevity.
+All assignments are coded in the C++ programming language.
+Every folder has a pdf at the top level that describes the assignment specifications.
+Makefiles are either at the top level of their respective assignment folders or inside a folder named code.

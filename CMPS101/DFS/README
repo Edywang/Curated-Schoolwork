@@ -1,0 +1,19 @@
+README
+Edwin Wang
+ekwang
+August 12th, 2019
+CS101 PA4
+
+Please note that although GraphTest.c does include code from the grading scripts of both this program and the previous program,
+I have also made some modifications to the grading scripts and testing files that I have incorporated and I'd like to get credit for doing so in order to test
+all of the methods, even those that aren't tested directly in the grading script.
+
+
+FindComponents.c - File with main method to use ADTs, usage %FindPath <input-file> <output-file>
+List.c - ADT file
+List.h - ADT header file
+Graph.c - ADT file
+Graph.h - ADT header file
+GraphTest.c - File with main method to test ADT
+Makefile - File used by GNU Make Utility
+README - This file

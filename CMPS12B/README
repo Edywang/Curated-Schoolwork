@@ -1,0 +1,17 @@
+The programs in this folder are from a course named Introduction to Data Structures.
+Assignment is abbreviated as assg for brevity.
+Below is a description of each of the programs/folders contained:
+
+Dictionary ADT: An ADT we implemented three times using different underlying data structures, it contains nodes with key and value pairs
+
+Dictionary C - Implementation of the Dictionary ADT using an underlying Stack in C
+Dictionary - Implementation of the Dictionary ADT using an underlying Linked List in Java
+HashTable - Implementation of the Dictionary ADT using an underlying Hash Table in C
+
+Simulation - A simulation of a Queue in Java, Main method in Simulation.java
+
+Standalone program files:
+FileReverse.java - Reverses an input file and writes the result to an output file
+Queens.java - Solves the n-queens problem
+Subset.java - Takes in two integers and lists all subsets of the first integer's size of the second integer
+charType.c - Takes an input file and counts number of each type of character in the file by line

@@ -1,0 +1,15 @@
+README
+
+Edwin Wang
+ekwang
+May 12th, 2019
+12B pa4
+
+Table of Contents:
+README - Table of contents
+Makefile - File used by GNU make utility
+Queue.java - File used to implement the interface
+Simulation.java - File containing main method
+QueueEmptyException.java - An exception thrown by other classes
+QueueInterface.java - Interface implemented by another class
+QueueTest.java - Testing file with alternate main method for testing purposes

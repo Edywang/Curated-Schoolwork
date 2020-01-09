@@ -1,0 +1,6 @@
+# Makefile.dep created Wed Nov  6 21:22:08 PST 2019
+# Edwin Wang and Andrew Lyle (ekwang and alyle respectively)
+debug.o: debug.cpp debug.h util.h util.tcc
+util.o: util.cpp debug.h util.h util.tcc
+TestMain.o: TestMain.cpp listmap.h xless.h xpair.h listmap.tcc debug.h \
+ util.h util.tcc

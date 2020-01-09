@@ -1,0 +1,38 @@
+The programs in this folder are from a course named Introduction to Programming (Accelerated).
+Assignment is abbreviated as assg for brevity.
+Below is a description of each of the programs/folders contained:
+
+Assignment 5 personal project https://drive.google.com/open?id=1UeU9v10m217p9YU8nJlwkTF_WrVGsWtA
+Click - Contains ClickSpeed.java, the final project for the class
+ClickSpeed.java - A simple UI to test someone's clicking speed
+
+onlineShoppingCart - Contains an online shopping cart including items, a cart, and a main method
+ItemToPurchase.java - The ItemToPurchase object
+ShoppingCart.java - The ShoppingCart object
+ShoppingCartManager.java - The main method with a simple text menu
+
+Assignment 4 https://drive.google.com/open?id=1DQXem4K9BaDVUnMMFw8sp8zP8O96jwnH
+plane - Package for Plane, a program to store shapes
+Plane.java - Implementation of methods for the package plane
+PlaneTest.java - The main method to test Plane.java
+
+Assignment 5 https://drive.google.com/drive/u/1/folders/1QK3kRrssVycZmjjS5P0rxEYlRtvnrmjH
+src - Src folder for Convert.java
+Convert.java - A UI that converts distances from different units of distance.
+
+Standalone Java files organized by assignment:
+Assignment 1 https://drive.google.com/open?id=1Q4eitalAlTbY_Gf4szMjEhMRNE-CxX--
+Clock.java - Simulates a clock
+Convert.java - Converts time from 12-hr to 24-hr
+Flip.java - Simple program to manipulate digits of a number
+Cost.java - Simple program to convert information about a drive to the cost of gas for that drive
+
+Assignment 2 https://drive.google.com/open?id=1mRAh6CkD6iXNWkI69TbxQzJ8biyL1CPv
+Increment.java - Simple program to increment numbers
+
+Assignment 3 https://drive.google.com/open?id=1AQ_KPNPlOfFkam7BbGGI6tI7gUm5xkUj
+Bingo.java - Simulates a game of Bingo
+
+Assignment 5 personal project https://drive.google.com/open?id=1UeU9v10m217p9YU8nJlwkTF_WrVGsWtA
+ClickSpeed.java - A copy of ClickSpeed.java from the folder Click
+

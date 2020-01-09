@@ -1,0 +1,52 @@
+infile: 1: a = b
+a = b
+infile: 2: c = d
+c = d
+infile: 3: a
+a = b
+infile: 4: a
+a = b
+infile: 5: c =a     
+c = a
+infile: 6: = = a
+infile: 7: #adsnalsn lia sdl
+infile: 8: # asdad
+infile: 9:    c= asd
+c = asd
+infile: 10: c ads = asd
+c ads = asd
+infile: 11: casddd = asd i
+casddd = asd i
+infile: 12:           #  1awddsa
+infile: 13:  #as
+infile: 14: d
+d: key not found
+infile: 15:  asd 
+asd: key not found
+infile: 16:  asdddddddddddd
+asdddddddddddd: key not found
+infile: 17: dassssssssssss    
+dassssssssssss: key not found
+infile: 18:   ds asd
+ds asd: key not found
+infile: 19:  = asd
+c = asd
+c ads = asd
+infile: 20: asd =
+infile: 21: adssdas ==
+adssdas = =
+infile: 22: = =
+adssdas = =
+infile: 23: = = ads
+infile: 24: = 
+a = b
+adssdas = =
+c = asd
+c ads = asd
+casddd = asd i
+infile: 25: = asd a asd  
+infile: 26: = adsdsasdadsa  
+infile: 27:       	=asddsda sdas ads  sad
+infile: 28: asd das ads =    	
+infile: 29:   d asda asd =
+infile: 30: adssssdaadsds  = 

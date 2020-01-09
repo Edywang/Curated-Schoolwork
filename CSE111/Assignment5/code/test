@@ -1,0 +1,4 @@
+define rect rectangle 100 100
+define sq square 29
+draw red rect 100 100
+draw blue sq 200 100

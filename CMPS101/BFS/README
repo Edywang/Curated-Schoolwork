@@ -1,0 +1,14 @@
+README
+Edwin Wang
+ekwang
+August 5th, 2019
+CS101 PA3
+
+FindPath.c - File with main method to use ADTs, usage %FindPath <input-file> <output-file>
+List.c - ADT file
+List.h - ADT header file
+Graph.c - ADT file
+Graph.h - ADT header file
+GraphTest.c - File with main method to test ADT
+Makefile - File used by GNU Make Utility
+README - This file

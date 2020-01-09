@@ -1,0 +1,6 @@
+# Makefile.dep created Wed Nov  6 14:10:26 PST 2019
+# Edwin Wang and Andrew Lyle (ekwang and alyle respectively)
+protocol.o: protocol.cpp protocol.h sockets.h
+sockets.o: sockets.cpp sockets.h
+cix.o: cix.cpp protocol.h sockets.h logstream.h
+cixd.o: cixd.cpp protocol.h sockets.h logstream.h
