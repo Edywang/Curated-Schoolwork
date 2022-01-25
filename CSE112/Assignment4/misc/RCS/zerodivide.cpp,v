@@ -1,0 +1,43 @@
+head	1.2;
+access;
+symbols;
+locks;
+comment	@// @;
+
+
+1.2
+date	2020.11.23.02.14.31;	author -;	state -;
+branches;
+next	1.1;
+
+1.1
+date	2020.11.23.01.59.53;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@-
+@
+text
+@// $Id$
+int main() {
+   int a = 3;
+   int b = 0;
+   a /= b;
+}
+@
+
+
+1.1
+log
+@-
+@
+text
+@d1 1
+@

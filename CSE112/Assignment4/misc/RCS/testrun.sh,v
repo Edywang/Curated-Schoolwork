@@ -1,0 +1,79 @@
+head	1.3;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.3
+date	2020.11.27.02.30.24;	author -;	state -;
+branches;
+next	1.2;
+
+1.2
+date	2020.11.27.02.28.56;	author -;	state -;
+branches;
+next	1.1;
+
+1.1
+date	2020.11.27.02.28.25;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.3
+log
+@-
+@
+text
+@#!/bin/sh
+# $Id: testrun.sh,v 1.2 2020-11-26 18:28:56-08 - - $
+
+function testrun {
+   echo ================================
+   run.perl $*
+}
+
+cid -si $0 run.perl
+testrun
+testrun error 0
+testrun error 1
+testrun error -1
+testrun abort
+testrun segfault
+testrun zerodivide
+testrun foo bar baz
+@
+
+
+1.2
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: testrun.sh,v 1.1 2020-11-26 18:28:25-08 - - $
+d6 1
+a6 1
+   run.perl $*; echo status = $?
+@
+
+
+1.1
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: test.run,v 1.4 2020-11-26 18:22:37-08 - - $
+d5 1
+a5 2
+   echo
+   echo ======== $*
+@

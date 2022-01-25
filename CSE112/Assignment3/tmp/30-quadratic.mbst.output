@@ -1,0 +1,11 @@
+Quadratic Equation solver.
+Input a, b, c:
+Error: InputStmt inherits Stmt>>interp: (InputStmt ((VarExpr #a) (VarExpr #b) (VarExpr #c) ))
+Error: IfStmt inherits Stmt>>interp: (IfStmt (BinopExpr #= (VarExpr #eof) (NumExpr 1.0)) #stop)
+Error: LetStmt inherits Stmt>>interp: (LetStmt #q (UnopExpr #sqrt (BinopExpr #- (BinopExpr #raisedTo: (VarExpr #b) (NumExpr 2.0)) (BinopExpr #* (BinopExpr #* (NumExpr 4.0) (VarExpr #a)) (VarExpr #c)))))
+Equation:  0.0 * x ^ 2 + 0.0 * x + 0.0
+root1 =  Error: BinopExpr inherits Expr>>value: (BinopExpr #/ (BinopExpr #+ (UnopExpr #negated (VarExpr #b)) (VarExpr #q)) (BinopExpr #* (NumExpr 2.0) (VarExpr #a)))
+NaN
+root2 =  Error: BinopExpr inherits Expr>>value: (BinopExpr #/ (BinopExpr #- (UnopExpr #negated (VarExpr #b)) (VarExpr #q)) (BinopExpr #* (NumExpr 2.0) (VarExpr #a)))
+NaN
+Error: GotoStmt inherits Stmt>>interp: (GotoStmt #loop)

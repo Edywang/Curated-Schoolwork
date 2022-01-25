@@ -1,0 +1,40 @@
+Error: LetStmt inherits Stmt>>interp: (LetStmt #pi (BinopExpr #* (NumExpr 4.0) (UnopExpr #atan (NumExpr 1.0))))
+Error: LetStmt inherits Stmt>>interp: (LetStmt #e (UnopExpr #exp (NumExpr 1.0)))
+1+1      =  Error: BinopExpr inherits Expr>>value: (BinopExpr #+ (NumExpr 1.0) (NumExpr 1.0))
+NaN
+2-2      =  Error: BinopExpr inherits Expr>>value: (BinopExpr #- (NumExpr 2.0) (NumExpr 2.0))
+NaN
+3*3      =  Error: BinopExpr inherits Expr>>value: (BinopExpr #* (NumExpr 3.0) (NumExpr 3.0))
+NaN
+4/9      =  Error: BinopExpr inherits Expr>>value: (BinopExpr #/ (NumExpr 4.0) (NumExpr 9.0))
+NaN
+2^10     =  Error: BinopExpr inherits Expr>>value: (BinopExpr #raisedTo: (NumExpr 2.0) (NumExpr 10.0))
+NaN
+3*4+5*6  =  Error: BinopExpr inherits Expr>>value: (BinopExpr #+ (BinopExpr #* (NumExpr 3.0) (NumExpr 4.0)) (BinopExpr #* (NumExpr 5.0) (NumExpr 6.0)))
+NaN
+log(10)  =  Error: UnopExpr inherits Expr>>value: (UnopExpr #ln (NumExpr 10.0))
+NaN
+sqrt(2)  =  Error: UnopExpr inherits Expr>>value: (UnopExpr #sqrt (NumExpr 2.0))
+NaN
+pi       =  3.141592653589793
+e        =  2.718281828459045
++1/+0    =  Error: BinopExpr inherits Expr>>value: (BinopExpr #/ (NumExpr 1.0) (NumExpr 0.0))
+NaN
+-1/+0    =  Error: BinopExpr inherits Expr>>value: (BinopExpr #/ (UnopExpr #negated (NumExpr 1.0)) (NumExpr 0.0))
+NaN
++1/-0    =  Error: BinopExpr inherits Expr>>value: (BinopExpr #/ (NumExpr 1.0) (UnopExpr #negated (NumExpr 0.0)))
+NaN
+-1/-0    =  Error: BinopExpr inherits Expr>>value: (BinopExpr #/ (UnopExpr #negated (NumExpr 1.0)) (UnopExpr #negated (NumExpr 0.0)))
+NaN
++0/+0    =  Error: BinopExpr inherits Expr>>value: (BinopExpr #/ (NumExpr 0.0) (NumExpr 0.0))
+NaN
+-0/-0    =  Error: BinopExpr inherits Expr>>value: (BinopExpr #/ (UnopExpr #negated (NumExpr 0.0)) (UnopExpr #negated (NumExpr 0.0)))
+NaN
+sqrt(-1) =  Error: UnopExpr inherits Expr>>value: (UnopExpr #sqrt (UnopExpr #negated (NumExpr 1.0)))
+NaN
+log(0)   =  Error: UnopExpr inherits Expr>>value: (UnopExpr #ln (NumExpr 0.0))
+NaN
+6.02e23  =  Error: BinopExpr inherits Expr>>value: (BinopExpr #* (NumExpr 6.02) (BinopExpr #raisedTo: (NumExpr 10.0) (NumExpr 23.0)))
+NaN
+(1+2)/7  =  Error: BinopExpr inherits Expr>>value: (BinopExpr #/ (BinopExpr #+ (NumExpr 1.0) (NumExpr 2.0)) (NumExpr 7.0))
+NaN

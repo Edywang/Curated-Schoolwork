@@ -1,0 +1,241 @@
+#!/usr/bin/perl
+# Brian Zhao and Edward Wang (bwzhao@ucsc.edu and ekwang@ucsc.edu)
+# $Id: pmake,v 1.36 2020-12-04 14:39:10-08 - - $
+
+$0 =~ s|.*/||;
+use Getopt::Std;
+use Data::Dumper;
+use strict;
+use warnings;
+
+$Data::Dumper::Indent = 1;
+$Data::Dumper::Sortkeys = 1;
+$Data::Dumper::Terse = 1;
+sub dump_hash ($\%) {
+   my ($label, $hashptr) = @_;
+   print STDERR "%$label: ", Data::Dumper->Dump ([$hashptr]);
+}
+
+my $STATUS = 0;
+END { exit $STATUS; }
+$SIG{'__WARN__'} = sub { print STDERR @_; $STATUS = 1; };
+$SIG{'__DIE__'} = sub { print STDERR @_; $STATUS = 1; exit; };
+
+# sigtoperl: x86_64 Linux unix1.lt.ucsc.edu
+# sigtoperl: Sun Nov 22 17:33:55 2020
+my %strsignal = (
+    0 => "Unknown signal 0",
+    1 => "Hangup",
+    2 => "Interrupt",
+    3 => "Quit",
+    4 => "Illegal instruction",
+    5 => "Trace/breakpoint trap",
+    6 => "Aborted",
+    7 => "Bus error",
+    8 => "Floating point exception",
+    9 => "Killed",
+   10 => "User defined signal 1",
+   11 => "Segmentation fault",
+   12 => "User defined signal 2",
+   13 => "Broken pipe",
+   14 => "Alarm clock",
+   15 => "Terminated",
+   16 => "Stack fault",
+   17 => "Child exited",
+   18 => "Continued",
+   19 => "Stopped (signal)",
+   20 => "Stopped",
+   21 => "Stopped (tty input)",
+   22 => "Stopped (tty output)",
+   23 => "Urgent I/O condition",
+   24 => "CPU time limit exceeded",
+   25 => "File size limit exceeded",
+   26 => "Virtual timer expired",
+   27 => "Profiling timer expired",
+   28 => "Window changed",
+   29 => "I/O possible",
+   30 => "Power failure",
+   31 => "Bad system call",
+);
+
+sub run_command (@) {
+   my (@command) = @_;
+   print "@command\n" if not $command[0] =~ /^\s*@/;
+   $command[0] =~ s/^@ //g;
+   $command[0] =~ s/^- //g;
+   my $status = eval {no warnings; system @command};
+   return undef unless $status;
+   return "$!" if $status == -1;
+   my $signal = $status & 0x7F;
+   my $core = $status & 0x80;
+   my $exit = ($status >> 8) & 0xFF;
+   return "Error $exit" unless $signal || $core;
+   return ($strsignal{$signal} || "Invalid Signal Number $signal")
+        . ($core ? " (core dumped)" : "");
+}
+
+my $MAKECMDGOALS;
+my $Makefile = "Makefile";
+my %OPTIONS;
+my %GRAPH;
+my %MACROS;
+
+sub usage() { die "Usage: $0 [-d] [target]\n" }
+sub stop($) { die "$Makefile:@_. Stop.\n" }
+
+sub scan_cmdline() {
+   getopts "dg", \%OPTIONS;
+   usage unless @ARGV <= 1;
+   $MAKECMDGOALS = $ARGV[0] if @ARGV == 1;
+}
+
+sub dump_graph() {
+   print STDERR "%MACROS:\n";
+   for my $macro (sort keys %MACROS) {
+      printf STDERR "%7d [%s] = [%s]\n",
+             $MACROS{$macro}{LINE}, $macro, $MACROS{$macro}{VALUE};
+   }
+   print STDERR "MAKECMDGOALS = [$MAKECMDGOALS]\n";
+   print STDERR "%GRAPH:\n";
+   for my $target (sort keys %GRAPH) {
+      my $prereqs = $GRAPH{$target}{PREREQS};
+      printf STDERR "%7d [%s] :", $GRAPH{$target}{LINE}, $target;
+      print STDERR " [$_]" for @$prereqs;
+      print STDERR "\n";
+      for my $cmd (@{$GRAPH{$target}{COMMANDS}}) {
+         printf STDERR "%7d.\t[%s]\n", $cmd->{LINE}, $cmd->{CMD};;
+      }
+   }
+}
+
+sub load_Makefile() {
+   open my $mkfile, "<$Makefile" or die "$0: $Makefile: $!";
+   my $target;
+   while (defined (my $line = <$mkfile>)) {
+      next if $line =~ m/^\s*(#|$)/;
+      if (!$target && $line =~ m/^\s*(\S+)\s*=\s*(.*?)\s*$/) {
+         $MACROS{$1} = {LINE=> $., VALUE=> $2};
+      }elsif ($line =~ m/^(\S+)\s*:\s*(.*)/) {
+         $target = expand_macros ($1);
+         $GRAPH{$target}{PREREQS} = [split ' ', expand_macros ($2)];
+         $GRAPH{$target}{LINE} = $.;
+         $MAKECMDGOALS = $target unless $MAKECMDGOALS;
+      }elsif ($line =~ m/^\t(.*)/) {
+         if (defined $target) {
+            push @{$GRAPH{$target}{COMMANDS}},
+                 {LINE=> $., CMD=> expand_macros ($1)};
+         }else {
+            stop "$.: Command before first target";
+         }
+      }else {
+         stop "$.: Missing separator";
+      }
+   }
+   close $mkfile;
+}
+
+sub expand_macro {
+   return $MACROS{$_[0]}{VALUE};
+}
+
+sub expand_macros {
+   my $val = $_[0];
+   return undef if not defined($val);
+   my $innermost = "(.*)\\\$\\\{([^\\\}]+)\\\}(.*)";
+   while ($val =~ m"$innermost"){
+      $val = "";
+      $val = $1 if defined($1);
+      my $t = expand_macro($2);
+      $val = $val . $t if defined $t;
+      $val = $val . $3 if defined($3);
+   }
+   $val =~ s/\$\$/\$/g;
+   return $val;
+}
+
+sub run_target {
+   return if not exists($GRAPH{$_[0]});
+   my $target = $_[0];
+   my $status = undef;
+   my $force = 0;
+   my $command = undef;
+   my $mytime = (stat($target))[9] if defined ($target);
+   my $update = 0;
+   my $first = "";
+   if (ref ($GRAPH{$target}{PREREQS}) eq 'ARRAY') {
+      $first = $GRAPH{$target}{PREREQS}[0];
+      for my $cmd (values $GRAPH{$target}{PREREQS}) {
+         next if not defined $cmd;
+         $command = $cmd;
+         return $status if defined($status);
+         $status = run_target ($command);
+         my $time = (stat($command))[9];
+         $update = 1 if defined($mytime)
+                    and defined($time) and $time > $mytime;
+      }
+   }
+   return $status if defined($mytime)
+                 and defined($command) and $update == 0;
+   if(ref($GRAPH{$target}{COMMANDS}) eq 'ARRAY'){
+      for my $cmd (values $GRAPH{$target}{COMMANDS}) {
+         return $status if defined($status);
+         $command = @{$cmd}{CMD};
+         $force = (substr($command, 0, 1) eq '-');
+         $status = run_command(parse_first_prereq($command, $first));
+         $status = undef if $force;
+      }
+   }
+   return $status;
+}
+
+sub parse_first_prereq {
+   my $command = $_[0];
+   my $prereq = $_[1];
+   $command =~ s/\$</$prereq/g;
+   return $command;
+}
+
+sub parse_percent (){
+   opendir my $dir, ".";
+   for my $target (keys %GRAPH){
+      next if not defined($GRAPH{$target}{PREREQS}[0]);
+      if ( $GRAPH{$target}{PREREQS}[0] =~ /^([^%]*)(%)([^%]*)$/ ){
+         my $prefix = $1;
+         my $postfix = $3;
+         for my $file (grep(/^($prefix)(.*)($3)$/, readdir($dir))){
+            if($file =~ /^($prefix)(.*)($postfix)$/){
+               my $targ = $target;
+               my $sub = $2;
+               $targ =~ s/%/$sub/;
+               $GRAPH{$targ}{PREREQS} = [$file];
+               $GRAPH{$targ}{COMMANDS} = $GRAPH{$target}{COMMANDS};
+            }
+         }
+      }
+   }
+   closedir $dir;
+}
+
+sub run_Makefile() {
+   my $status = undef;
+   for my $target ($MAKECMDGOALS){
+      $status = run_target $target;
+   }
+   return $status;
+}
+
+scan_cmdline;
+load_Makefile;
+parse_percent;
+$STATUS = run_Makefile;
+if(defined($STATUS)){
+   $STATUS = 1;
+}
+else{
+   $STATUS = 0;
+}
+
+dump_hash ("MACROS", %MACROS) if $OPTIONS{'d'};
+dump_hash ("GRAPH", %GRAPH) if $OPTIONS{'d'};
+dump_graph if $OPTIONS{'g'};
+

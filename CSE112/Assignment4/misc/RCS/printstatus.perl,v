@@ -1,0 +1,260 @@
+head	1.6;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.6
+date	2020.11.23.02.02.01;	author -;	state -;
+branches;
+next	1.5;
+
+1.5
+date	2020.11.23.01.47.20;	author -;	state -;
+branches;
+next	1.4;
+
+1.4
+date	2020.11.23.01.46.04;	author -;	state -;
+branches;
+next	1.3;
+
+1.3
+date	2020.11.23.01.44.29;	author -;	state -;
+branches;
+next	1.2;
+
+1.2
+date	2020.11.23.01.43.29;	author -;	state -;
+branches;
+next	1.1;
+
+1.1
+date	2020.11.19.03.38.21;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.6
+log
+@-
+@
+text
+@#!/usr/bin/perl
+# $Id: printstatus.perl,v 1.5 2020-11-22 17:47:20-08 - - $
+#
+# Copy code from this file in order to print an exit status.
+#
+use strict;
+use warnings;
+
+# sigtoperl: x86_64 Linux unix1.lt.ucsc.edu
+# sigtoperl: Sun Nov 22 17:33:55 2020
+my %strsignal = (
+    0 => "Unknown signal 0",
+    1 => "Hangup",
+    2 => "Interrupt",
+    3 => "Quit",
+    4 => "Illegal instruction",
+    5 => "Trace/breakpoint trap",
+    6 => "Aborted",
+    7 => "Bus error",
+    8 => "Floating point exception",
+    9 => "Killed",
+   10 => "User defined signal 1",
+   11 => "Segmentation fault",
+   12 => "User defined signal 2",
+   13 => "Broken pipe",
+   14 => "Alarm clock",
+   15 => "Terminated",
+   16 => "Stack fault",
+   17 => "Child exited",
+   18 => "Continued",
+   19 => "Stopped (signal)",
+   20 => "Stopped",
+   21 => "Stopped (tty input)",
+   22 => "Stopped (tty output)",
+   23 => "Urgent I/O condition",
+   24 => "CPU time limit exceeded",
+   25 => "File size limit exceeded",
+   26 => "Virtual timer expired",
+   27 => "Profiling timer expired",
+   28 => "Window changed",
+   29 => "I/O possible",
+   30 => "Power failure",
+   31 => "Bad system call",
+);
+
+#
+# See man -s 2 wait for an explanation.
+#
+sub status_string ($) {
+   my ($status) = @@_;
+   return undef unless $status;
+   printf "0x%08X\n", $status;
+   print $status & 0xFF, "\n";
+   return sprintf "Error %d", $status >> 8 if ($status & 0xFF) == 0;
+   my $message = $strsignal{$status & 0x7F} || "Invalid Signal Number";
+   $message .= " (core dumped)" if $status & 0x80;
+   return $message;
+}
+
+#
+# What you need is the hash and the function.
+# The following is just a dummy main function for testing.
+#
+
+system "@@ARGV";
+printf "0x%04X %s\n", $?, status_string $? if $?;
+
+@
+
+
+1.5
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: printstatus.perl,v 1.4 2020-11-22 17:46:04-08 - - $
+d66 1
+a66 1
+print status_string $?, "\n";
+@
+
+
+1.4
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: printstatus.perl,v 1.3 2020-11-22 17:44:29-08 - - $
+d65 3
+a67 5
+for my $code (@@ARGV) {
+   my $string = status_string $code;
+   next unless $string;
+   printf "status 0x%04X = %s\n", $code, $string;
+}
+@
+
+
+1.3
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: printstatus.perl,v 1.2 2020-11-22 17:43:29-08 - - $
+a55 26
+   $message .= " (core dumped)" if $status & 0x80;
+   return $message;
+}
+
+#
+# What you need is the hash and the function.
+# The following is just a dummy main function for testing.
+#
+
+for my $code (@@ARGV) {
+   my $string = status_string $code;
+   next unless $string;
+   printf "status 0x%04X = %s\n", $code, $string;
+}
+
+#
+# See man -s 2 wait for an explanation.
+#
+sub status_string ($) {
+   my ($status) = @@_;
+   return undef unless $status;
+   printf "0x%08X\n", $status;
+   print $status & 0xFF, "\n";
+   return sprintf "Error %d", $status >> 8 if ($status & 0xFF) == 0;
+   my $message = $status_strings{$status & 0x7F}
+                 || "Invalid Signal Number";
+@
+
+
+1.2
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: printstatus.perl,v 1.1 2020-11-18 19:38:21-08 - - $
+d55 1
+a55 2
+   my $message = $status_strings{$status & 0x7F}
+                 || "Invalid Signal Number";
+@
+
+
+1.1
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: printstatus.perl,v 1.1 2014-10-03 16:57:20-07 - - $
+d9 35
+a43 46
+my %status_strings = (
+    1=> "Hangup",
+    2=> "Interrupt",
+    3=> "Quit",
+    4=> "Illegal Instruction",
+    5=> "Trace/Breakpoint Trap",
+    6=> "Abort",
+    7=> "Emulation Trap",
+    8=> "Arithmetic Exception",
+    9=> "Killed",
+   10=> "Bus Error",
+   11=> "Segmentation Fault",
+   12=> "Bad System Call",
+   13=> "Broken Pipe",
+   14=> "Alarm Clock",
+   15=> "Terminated",
+   16=> "User Signal 1",
+   17=> "User Signal 2",
+   18=> "Child Status Changed",
+   19=> "Power-Fail/Restart",
+   20=> "Window Size Change",
+   21=> "Urgent Socket Condition",
+   22=> "Pollable Event",
+   23=> "Stopped (signal)",
+   24=> "Stopped (user)",
+   25=> "Continued",
+   26=> "Stopped (tty input)",
+   27=> "Stopped (tty output)",
+   28=> "Virtual Timer Expired",
+   29=> "Profiling Timer Expired",
+   30=> "Cpu Limit Exceeded",
+   31=> "File Size Limit Exceeded",
+   32=> "No runnable lwp",
+   33=> "Inter-lwp signal",
+   34=> "Checkpoint Freeze",
+   35=> "Checkpoint Thaw",
+   36=> "Thread Cancellation",
+   37=> "Resource Lost",
+   38=> "First Realtime Signal",
+   39=> "Second Realtime Signal",
+   40=> "Third Realtime Signal",
+   41=> "Fourth Realtime Signal",
+   42=> "Fourth Last Realtime Signal",
+   43=> "Third Last Realtime Signal",
+   44=> "Second Last Realtime Signal",
+   45=> "Last Realtime Signal",
+d45 26
+@

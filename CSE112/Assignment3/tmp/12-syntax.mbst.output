@@ -1,0 +1,6 @@
+Error: GotoStmt inherits Stmt>>interp: (GotoStmt #label)
+Error: DimStmt inherits Stmt>>interp: (DimStmt #a (NumExpr 10.0))
+Error: LetStmt inherits Stmt>>interp: (LetStmt #n (NumExpr 6.0))
+Error: IfStmt inherits Stmt>>interp: (IfStmt (BinopExpr #< (NumExpr 1.0) (NumExpr 1.0)) #false)
+Error: InputStmt inherits Stmt>>interp: (InputStmt ((VarExpr #x) ))
+Hello

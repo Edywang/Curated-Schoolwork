@@ -1,0 +1,11 @@
+Error: GotoStmt inherits Stmt>>interp: (GotoStmt #zero)
+four
+Error: GotoStmt inherits Stmt>>interp: (GotoStmt #done)
+one
+Error: GotoStmt inherits Stmt>>interp: (GotoStmt #two)
+three
+Error: GotoStmt inherits Stmt>>interp: (GotoStmt #four)
+two
+Error: GotoStmt inherits Stmt>>interp: (GotoStmt #three)
+zero
+Error: GotoStmt inherits Stmt>>interp: (GotoStmt #one)

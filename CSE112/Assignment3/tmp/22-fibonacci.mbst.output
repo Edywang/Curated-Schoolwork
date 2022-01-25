@@ -1,0 +1,12 @@
+Error: LetStmt inherits Stmt>>interp: (LetStmt #max (BinopExpr #raisedTo: (NumExpr 10.0) (NumExpr 5.0)))
+Error: LetStmt inherits Stmt>>interp: (LetStmt #fib0 (NumExpr 0.0))
+Error: LetStmt inherits Stmt>>interp: (LetStmt #fib1 (NumExpr 1.0))
+fib( 0.0)= 0.0
+fib( 1.0)= 0.0
+Error: LetStmt inherits Stmt>>interp: (LetStmt #i (NumExpr 1.0))
+Error: LetStmt inherits Stmt>>interp: (LetStmt #fib (BinopExpr #+ (VarExpr #fib0) (VarExpr #fib1)))
+Error: LetStmt inherits Stmt>>interp: (LetStmt #i (BinopExpr #+ (VarExpr #i) (NumExpr 1.0)))
+fib( 0.0)= 0.0
+Error: LetStmt inherits Stmt>>interp: (LetStmt #fib0 (VarExpr #fib1))
+Error: LetStmt inherits Stmt>>interp: (LetStmt #fib1 (VarExpr #fib))
+Error: IfStmt inherits Stmt>>interp: (IfStmt (BinopExpr #<= (VarExpr #fib) (VarExpr #max)) #loop)

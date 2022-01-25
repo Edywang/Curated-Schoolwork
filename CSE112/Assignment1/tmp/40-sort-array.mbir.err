@@ -1,0 +1,2 @@
+./mbir.scm: line 1: syntax error near unexpected token `;;'
+./mbir.scm: line 1: `;; Edwin Wang and Brian Zhao (ekwang and bwzhao respectively)'

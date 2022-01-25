@@ -1,0 +1,4 @@
+Error: LetStmt inherits Stmt>>interp: (LetStmt #i (NumExpr 1.0))
+ 0.0
+Error: LetStmt inherits Stmt>>interp: (LetStmt #i (BinopExpr #+ (VarExpr #i) (NumExpr 1.0)))
+Error: IfStmt inherits Stmt>>interp: (IfStmt (BinopExpr #<= (VarExpr #i) (NumExpr 10.0)) #loop)

@@ -1,0 +1,36 @@
+Error: LetStmt inherits Stmt>>interp: (LetStmt #size (NumExpr 100.0))
+Error: DimStmt inherits Stmt>>interp: (DimStmt #a (VarExpr #size))
+Error: LetStmt inherits Stmt>>interp: (LetStmt #max (NumExpr 0.0))
+Error: InputStmt inherits Stmt>>interp: (InputStmt ((VarExpr #x) ))
+Error: IfStmt inherits Stmt>>interp: (IfStmt (BinopExpr #~= (VarExpr #eof) (NumExpr 0.0)) #eof)
+Error: IfStmt inherits Stmt>>interp: (IfStmt (BinopExpr #~= (VarExpr #x) (VarExpr #x)) #error)
+Error: LetStmt inherits Stmt>>interp: (LetStmt (#aput #a #max ) (VarExpr #x))
+Error: LetStmt inherits Stmt>>interp: (LetStmt #max (BinopExpr #+ (VarExpr #max) (NumExpr 1.0)))
+Error: IfStmt inherits Stmt>>interp: (IfStmt (BinopExpr #< (VarExpr #max) (VarExpr #size)) #read)
+
+unsorted
+Error: LetStmt inherits Stmt>>interp: (LetStmt #i (NumExpr 0.0))
+a[ 0.0]= Error: BinopExpr inherits Expr>>value: (BinopExpr #aget (VarExpr #a) (VarExpr #i))
+NaN
+Error: LetStmt inherits Stmt>>interp: (LetStmt #i (BinopExpr #+ (VarExpr #i) (NumExpr 1.0)))
+Error: IfStmt inherits Stmt>>interp: (IfStmt (BinopExpr #< (VarExpr #i) (VarExpr #max)) #prtlp)
+Error: IfStmt inherits Stmt>>interp: (IfStmt (BinopExpr #< (VarExpr #i) (NumExpr 1.0)) #sorted)
+Error: LetStmt inherits Stmt>>interp: (LetStmt #i (BinopExpr #- (VarExpr #max) (NumExpr 1.0)))
+Error: LetStmt inherits Stmt>>interp: (LetStmt #j (NumExpr 0.0))
+Error: IfStmt inherits Stmt>>interp: (IfStmt (BinopExpr #<= (BinopExpr #aget (VarExpr #a) (VarExpr #j)) (BinopExpr #aget (VarExpr #a) (BinopExpr #+ (VarExpr #j) (NumExpr 1.0)))) #noswap)
+Error: LetStmt inherits Stmt>>interp: (LetStmt #t (BinopExpr #aget (VarExpr #a) (VarExpr #j)))
+Error: LetStmt inherits Stmt>>interp: (LetStmt (#aput #a #j ) (BinopExpr #aget (VarExpr #a) (BinopExpr #+ (VarExpr #j) (NumExpr 1.0))))
+Error: LetStmt inherits Stmt>>interp: (LetStmt (#aput #a (#+ #j 1.0 ) ) (VarExpr #t))
+Error: LetStmt inherits Stmt>>interp: (LetStmt #j (BinopExpr #+ (VarExpr #j) (NumExpr 1.0)))
+Error: IfStmt inherits Stmt>>interp: (IfStmt (BinopExpr #<= (VarExpr #j) (BinopExpr #- (VarExpr #i) (NumExpr 1.0))) #inner)
+Error: LetStmt inherits Stmt>>interp: (LetStmt #i (BinopExpr #- (VarExpr #i) (NumExpr 1.0)))
+Error: IfStmt inherits Stmt>>interp: (IfStmt (BinopExpr #> (VarExpr #i) (NumExpr 0.0)) #outer)
+
+sorted
+Error: LetStmt inherits Stmt>>interp: (LetStmt #i (NumExpr 0.0))
+a[ 0.0]= Error: BinopExpr inherits Expr>>value: (BinopExpr #aget (VarExpr #a) (VarExpr #i))
+NaN
+Error: LetStmt inherits Stmt>>interp: (LetStmt #i (BinopExpr #+ (VarExpr #i) (NumExpr 1.0)))
+Error: IfStmt inherits Stmt>>interp: (IfStmt (BinopExpr #< (VarExpr #i) (VarExpr #max)) #sortlp)
+Error: GotoStmt inherits Stmt>>interp: (GotoStmt #stop)
+Invalid input

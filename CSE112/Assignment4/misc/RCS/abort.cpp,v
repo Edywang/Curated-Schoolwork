@@ -1,0 +1,27 @@
+head	1.1;
+access;
+symbols;
+locks;
+comment	@// @;
+
+
+1.1
+date	2020.11.23.02.22.56;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@-
+@
+text
+@// $Id$
+int main() {
+   throw 0;
+}
+@

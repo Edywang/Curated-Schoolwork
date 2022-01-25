@@ -1,0 +1,11 @@
+Error: InputStmt inherits Stmt>>interp: (InputStmt ((VarExpr #n) ))
+Error: LetStmt inherits Stmt>>interp: (LetStmt #i (NumExpr 0.0))
+ 0.0:  0.0
+Error: IfStmt inherits Stmt>>interp: (IfStmt (BinopExpr #<= (VarExpr #i) (NumExpr 1.0)) #done)
+Error: LetStmt inherits Stmt>>interp: (LetStmt #i (BinopExpr #+ (VarExpr #i) (NumExpr 1.0)))
+Error: LetStmt inherits Stmt>>interp: (LetStmt #f (UnopExpr #floor (BinopExpr #/ (VarExpr #n) (NumExpr 2.0))))
+Error: IfStmt inherits Stmt>>interp: (IfStmt (BinopExpr #~= (VarExpr #n) (BinopExpr #* (VarExpr #f) (NumExpr 2.0))) #odd)
+Error: LetStmt inherits Stmt>>interp: (LetStmt #n (VarExpr #f))
+Error: GotoStmt inherits Stmt>>interp: (GotoStmt #while)
+Error: LetStmt inherits Stmt>>interp: (LetStmt #n (BinopExpr #+ (BinopExpr #* (VarExpr #n) (NumExpr 3.0)) (NumExpr 1.0)))
+Error: GotoStmt inherits Stmt>>interp: (GotoStmt #while)

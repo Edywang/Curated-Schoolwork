@@ -1,0 +1,11 @@
+1+1      =  Error: BinopExpr inherits Expr>>value: (BinopExpr #+ (NumExpr 1.0) (NumExpr 1.0))
+NaN
+2-2      =  Error: BinopExpr inherits Expr>>value: (BinopExpr #- (NumExpr 2.0) (NumExpr 2.0))
+NaN
+3*3      =  Error: BinopExpr inherits Expr>>value: (BinopExpr #* (NumExpr 3.0) (NumExpr 3.0))
+NaN
+
+4/9      =  Error: BinopExpr inherits Expr>>value: (BinopExpr #/ (NumExpr 4.0) (NumExpr 9.0))
+NaN
+3*4+5*6  =  Error: BinopExpr inherits Expr>>value: (BinopExpr #+ (BinopExpr #* (NumExpr 3.0) (NumExpr 4.0)) (BinopExpr #* (NumExpr 5.0) (NumExpr 6.0)))
+NaN

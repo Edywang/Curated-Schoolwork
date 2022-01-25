@@ -1,0 +1,17 @@
+Factorial of:
+Error: InputStmt inherits Stmt>>interp: (InputStmt ((VarExpr #x) ))
+Error: IfStmt inherits Stmt>>interp: (IfStmt (BinopExpr #= (VarExpr #eof) (NumExpr 1.0)) #stop)
+Error: IfStmt inherits Stmt>>interp: (IfStmt (BinopExpr #~= (VarExpr #x) (VarExpr #x)) #error)
+Error: IfStmt inherits Stmt>>interp: (IfStmt (BinopExpr #< (VarExpr #x) (NumExpr 0.0)) #error)
+Error: GotoStmt inherits Stmt>>interp: (GotoStmt #letfac)
+Invalid input.
+Error: GotoStmt inherits Stmt>>interp: (GotoStmt #read)
+Error: LetStmt inherits Stmt>>interp: (LetStmt #factorial (NumExpr 1.0))
+Error: LetStmt inherits Stmt>>interp: (LetStmt #itor (NumExpr 2.0))
+Error: IfStmt inherits Stmt>>interp: (IfStmt (BinopExpr #> (VarExpr #itor) (VarExpr #x)) #prt)
+Error: LetStmt inherits Stmt>>interp: (LetStmt #factorial (BinopExpr #* (VarExpr #factorial) (VarExpr #itor)))
+Error: LetStmt inherits Stmt>>interp: (LetStmt #itor (BinopExpr #+ (VarExpr #itor) (NumExpr 1.0)))
+Error: GotoStmt inherits Stmt>>interp: (GotoStmt #loop)
+factorial( 0.0) =  0.0
+Error: GotoStmt inherits Stmt>>interp: (GotoStmt #read)
+Program stopping.
