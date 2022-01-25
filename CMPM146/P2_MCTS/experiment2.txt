@@ -1,0 +1,6 @@
+In experiment 2, we tested mcts_vanilla against mcts_modified at 3 different number of nodes: 10, 100, and 1000
+We analyzed the win rate of player 2, modified, at each of these nodes and below are our results, as well as plotted in the associated "Experiment 2.png"
+The win rates for each of the respective number of nodes is as follows: 75, 63, and 74.
+Now this is a very odd result, and we were not sure what to make of it, we expected either a clear decrease or increase in win rate but this is not what we ended up with.
+However, it is at least certain that modified performed better than vanilla at all numbers of nodes, it's simply a matter of how much the difference is.
+It is possible that because we only played 100 games at each number of nodes, the sample size might just be too small to verify a result but it is odd nonetheless and we weren't sure what to make of it.

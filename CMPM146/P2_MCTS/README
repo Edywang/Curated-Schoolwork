@@ -1,0 +1,7 @@
+Edwin Wang and Tai Wen Lee
+The modification done for mcts_modified.py is a simple heuristic used in the rollout process of MCTS.
+Instead of choosing random moves while rolling out to an end-state, we compared moves based on the outcome of a random rollout from that move.
+If the game was complete, we would use the points_values to check who won. Obviously if a move results in a win for a player, that is certainly the best move.
+If the game was not complete, we would use the difference of the number of boxes owned by each player. Such that if a player owns more boxes, our algorithm would select it.
+We added various variables to control this rollout process including a max amount of actions to check, a max depth for each check, and a number of rollouts to do.
+By playing with these numbers, we could control the runtime and accuracy of the algorithm, finding a good balance where the algorithm showed benefit against the vanilla implementation but did not take too long to run.

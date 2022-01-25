@@ -1,0 +1,7 @@
+These are my assignments for Game AI. Each folder contains a document that goes into detail on the specifications of the assignment but here is a summary of each:
+P1 - Utilize the A* algorithm to search through a NavMesh and create a suitable path.
+P2 - Use Monte Carlo Tree Search to create an AI that can successfully play Ultimate Tic-Tac-Toe.
+P3 - Implement Behavior Trees to act as opponents in a videogame.
+P4 - Use a Hierarchical Task Network to find solutions to a planning problem.
+P5 - Implement a genetic algorithm capable of producing Mario levels.
+P6 - Use deep learning (TensorFlow) to classify images as dogs or cats.

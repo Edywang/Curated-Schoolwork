@@ -1,0 +1,9 @@
+In experiment 1, we tested mcts_vanilla against itself. Player 1 had a fixed 100 nodes while player 2 had a fluctuating number of nodes: 10, 50, 100, and 200.
+We analyzed the win rate of player 2 against player 1 at each of these nodes and below are our results, as well as plotted in the associated "Experiment 1.png"
+The win rates for each of the respective number of nodes is as follows: 11, 35, 54, 62.
+As clearly visible, as the number of nodes goes up, the win rate of player 2 also strictly increased.
+However, this improvement was not linear, rather, it tapered off as we increased the number of nodes, suggesting diminishing returns.
+I believe this is because there is a hard limit at the top, where an infinite amount of nodes would not increase the accuracy of the algorithm.
+This is likely due to the limited size of the game tree, when we have a number of nodes that is at or exceeds the size of the game tree, no more exploration will result in gained winrate.
+As such, it is slightly more accurate to say that increases in the number of nodes are not strictly increasing, but rather strictly not decreasing, and only increases or maintains a certain winrate.
+We also observed a slight discrepancy in the winrates at 100 vs 100, but it is less than 5% of the total games, well within an expected margin of error for an experiment like this.

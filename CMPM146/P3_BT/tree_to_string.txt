@@ -1,0 +1,15 @@
+Sequence: Highest Level Ordering of Strategies
+| Check: if_still_playing
+| Selector: High Level Ordering of Strategies
+| | Sequence: Offensive Strategy
+| | | Check: if_enemy_planet_available
+| | | Action: attack
+| | Sequence: Spread Strategy
+| | | Check: if_neutral_planet_available
+| | | Action: spread
+| | Sequence: Defend Strategy
+| | | Check: if_counter_fleet_possible
+| | | Action: reinforce_planet
+| | Sequence: Attack Weakest Strategy
+| | | Check: have_largest_fleet
+| | | Action: attack_weakest_enemy_planet

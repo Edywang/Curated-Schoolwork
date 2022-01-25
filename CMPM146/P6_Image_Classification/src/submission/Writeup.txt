@@ -1,0 +1,9 @@
+We've included folders for the basic model, dropout model, and feature extraction models.
+In each folder is the summary as printed from model.summary() and the best result the model generated.
+
+The basic_model, which rapidly increased in accuracy with each epoch, required the least training to achieve its best performance.
+However, the basic model didn't reach nearly the same level of validation accuracy when compared to the other two models, which both ended with >80% validation accuracy.
+
+In the end, the feature extraction model seemed the best. Still, it increased a lot slower than dropout and basic, only reaching its final number of accuracy and validation accuracy >90% in the last few epochs.
+We thought this was due to its model being the most pretrained, in that the image classifying was already done for us and this would also support there being less room for improvement per epoch.
+The image classifier is likely trained with a much larger dataset than we used for our models, so having these features given to our network allowed for much better performance.

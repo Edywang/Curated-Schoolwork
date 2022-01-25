@@ -1,0 +1,47 @@
+SELECTION STRATEGIES:
+
+First, our two selection strategies were tournament and roulette selection.
+
+We found that as we increased the number of competitors in each tournament,
+we would lose some of the randomness that roulette selection benefits from.
+
+We ended up using a tournament size of 50 because we found it was a good balance of randomness
+but also it would choose samples with a high enough fitness score enough of the time to make decent levels.
+
+BELOW ARE EXPLANATIONS FOR THE GIVEN FUNCTIONS:
+
+The given mutate function worked by first having a 10% chance of a mutation happening
+Then, if a mutation happened, it would select a random gene within the genome to mutate
+It would also select a random mutation to do to the gene, either moving it horizontally, vertically,
+or making it breakable (if applicable to the type).
+
+The given generate children function worked by choosing a random crossover point in each of the genomes
+then splicing the two parts together, so it would grab the first "pa" genes from a and the last "pb" genes from b.
+It would then splice these together in both orders, a then b, and b then a, creating two unique children.
+
+BELOW ARE OUR MODIFICATIONS:
+
+First, we added a helper function called _make_logical_genome which made sure the level made some logical sense to be played through
+Second, we added and played around with the values in calculate_fitness to make it a little more interesting. Some key modifications were the addition of decorationPercentage and the higher weighting of solvability
+but we played with almost all the values a little.
+
+We also changed the weight of the chance of blocks in mutate to make some blocks rarer and some more common.
+A large part of this was we noticed more enemies than we wanted, and more items such as coins and mushrooms than made sense.
+After testing this for a while, we actually decided to go back to mutating randomly among options, since it actually performed fairly well.
+
+In generate_children, we tried first a uniform crossover, then a single crossover point and found the single crossover point ended up with a lot more
+playable levels, so we ended up sticking with a single random crossover point
+
+We used our helper function in almost all of the methods where the level could be changed to make sure the levels
+stayed logical at each step of the way.
+
+We changed changed the population size to 300 just so I could see all of the levels in population in the VSCode debugger since that's VSCode's limit
+for showing data structures.
+
+We added two stopping conditions, one is a fitness max and the other was a generational max to make sure it didn't keep going too long.
+We made the generation max high enough that most of the time, it hit the required fitness first, since we want to give it enough time to generate something interesting.
+
+ABOUT OUR FAVORITE LEVELS:
+The thing we liked about our favorite levels was that they were a lot more difficult than the default Mario levels. I personally haven't played super mario maker levels
+but I have watched a good amount of them and it reminded me of the hectic nature and difficulty of those types of levels.
+These types of levels are reminiscent of "kaizo" levels (or so my partner tells me :D)
