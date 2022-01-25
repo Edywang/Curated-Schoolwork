@@ -1,0 +1,50 @@
+timestamp: 2020-05-09T08:54:20.009487
+CREATE TABLE "auth_user"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "username" CHAR(512) UNIQUE,
+    "email" CHAR(512) UNIQUE,
+    "phone_number" CHAR(512),
+    "password" CHAR(512),
+    "first_name" CHAR(512),
+    "last_name" CHAR(512),
+    "sso_id" CHAR(512),
+    "action_token" CHAR(512),
+    "last_password_change" TIMESTAMP
+);
+success!
+timestamp: 2020-05-09T08:54:20.023491
+CREATE TABLE "auth_user_tag_groups"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "path" CHAR(512),
+    "record_id" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  
+);
+success!
+timestamp: 2020-05-09T08:54:20.091001
+CREATE TABLE "person"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "name" CHAR(512),
+    "job" CHAR(512),
+    "resume" TEXT
+);
+success!
+timestamp: 2020-05-09T08:54:20.105504
+CREATE TABLE "superhero"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "name" CHAR(512),
+    "real_identity" INTEGER REFERENCES "person" ("id") ON DELETE CASCADE  
+);
+success!
+timestamp: 2020-05-09T08:54:20.116505
+CREATE TABLE "superpower"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "description" CHAR(512)
+);
+success!
+timestamp: 2020-05-09T08:54:20.127007
+CREATE TABLE "tag"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "superhero" INTEGER REFERENCES "superhero" ("id") ON DELETE CASCADE  ,
+    "superpower" INTEGER REFERENCES "superpower" ("id") ON DELETE CASCADE  ,
+    "strength" INTEGER
+);
+success!

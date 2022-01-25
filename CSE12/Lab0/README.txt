@@ -1,0 +1,1 @@
+I, Edwin Wang, have read and understood the CSE12 syllabus and Personal Responsibility Document. ekwang 29 September 2019

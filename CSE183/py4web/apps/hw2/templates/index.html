@@ -1,0 +1,86 @@
+[[extend 'layout.html']]
+
+<!-- This webpage is designed to model this screenshot: https://sites.google.com/a/ucsc.edu/luca/classes/cmps-183-hypermedia-and-the-web/cse-183-spring-2020/homework-2/Screen%20Shot%202020-04-07%20at%204.04.56%20PM.png -->
+<!-- python py4web-start.py apps -->
+<title>Mountain Lion Sighted on Campus</title>
+<!-- Your HTML here -->
+
+<!-- For the top section -->
+<section class="section" id="top">
+    <div class="container">
+        <nav class="level box has-background-link">
+            <div class="level-item level-left">
+                <img src="[[=URL('static', 'images/logo.png')]]" alt="Logo" width="300">
+            </div>
+            <div class="level-item level-right has-text-white">
+                <p>January 8, 2012</p>
+            </div>
+        </nav>
+    </div>
+</section>
+
+<!-- For the middle section -->
+<section class="section" id="mid">
+    <div class="container">
+        <div class="columns">
+            <div class="column is-two-thirds">
+                <p class="title has-text-weight-bold">Mountain Lion Sighted on Campus</p>
+                <p class="subtitle">Claims to be intrested in web development</p>
+                <div class="columns">
+                    <div class="column">
+                        <div class="box">
+                            <img src="[[=URL('static', 'images/lion-layers-2.svg')]]">
+                            <p class="has-text-weight-bold">A lion has been seen roaming the empty library.</p>
+                        </div>
+                        <p>A lion has been seen roaming the empty science library on campus. The police, noticing the intrusion, approached the lion and asked what was his business there. The lion replied that he was attempting to learn web development, and that he found the programming portions rather interesting, but the task of laying out web page most frustrating.</p>
+                    </div>
+                    <div class="column">
+                        <p class="is-italic">"It is truly disappointing! Great minds, such as Don Knuth and Leslie Lamport, devoted their time to improving the art of typography and the science of optimizing the presentation of content on a page, and then here come like a band of savages these web developers, oblivious to the great work of the past, with this completely inane and baroque language!".</p>
+                        <p>He continued, <i>"First they invented a lot of tags. Then they fell out of love for them, and decided it's cooler to do things using the same few tags all over the place, decorating them with yet another language called CSS (the name at least it reminds me of my feeling towards it, for I know latin). So now you need two languages to get one thing accomplished! And the whole thing is so complex that to lay down something with a few columns on a page, you practically need a university degree! And look! It cannot even balance the content on these two colums, for goodness sake!"</i> The police thought it better to leave the lion alone, as he looked quite ready to bite anyone who came close.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <p class="title has-text-weight-bold">Professor de Alfaro Claims Break-Through in Graphics</p>
+                <p class="subtitle">A new, very efficient algorithm enables fast scene rendering</p>
+                <p>Ray-tracing is a technique for scene rendering in which the light rays that fall into an observer's eyes are retraced, so to say, in the reverse direction, to reconstruct exactly what the view would have been. This is a daunting process, because when encoutering solid bodies, light is scattered, and so the ray tracing must chase the many possible backwards paths of such scattering. Professor de Alfaro recently claimed to have invented a new, far more efficient algorithm, one that works in microseconds regardless of the dimension or complexity of the scene. "There are a few restrictions," he added, "and for the moment our new technique is applicable only to closed environments in which the integral of the luminous flux is zero across any closed surface." The contribution is currently undergoing peer review.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- For the bottom section -->
+<section class="section" id="bot">
+    <div class="container">
+        <div class="tile is-ancestor"> <!-- This tile contains all my other tiles -->
+            <div class="tile is-4 is-vertical is-parent"> <!-- This tile is the parent of the left column which takes 1/3rd because 4/12 = 1/3 of the space -->
+                <article class="tile is-child box has-text-white has-background-primary"> <!-- This is intended for Ad1 -->
+                    Ad1
+                </article>
+                <article class="tile is-child box has-text-black has-background-warning"> <!-- This is intended for Ad2 -->
+                    Ad2
+                </article>
+            </div>
+            <div class="tile is-vertical"> <!-- This tile is the parent of the right column (Which actually contained two columns) which takes 2/3rd -->
+                <div class="tile">
+                    <div class="tile is-6 is-vertical is-parent">
+                        <article class="tile is-child box has-text-white has-background-info"> <!-- This is intended for Ad3 -->
+                            Ad3
+                        </article>
+                        <article class="tile is-child box has-text-white has-background-info"> <!-- This is intended for Ad4 -->
+                            Ad4
+                        </article>
+                    </div>
+                    <div class="tile is-parent">
+                        <article class="tile is-child box has-text-white has-background-success"> <!-- This is intended for Ad5 -->
+                            Ad5
+                        </article>
+                    </div>
+                </div>
+                <article class="tile is-child box has-text-white has-background-danger"> <!-- This is intended for Ad6 -->
+                    Ad6
+                </article>
+            </div>
+        </div>
+    </div>
+</section>

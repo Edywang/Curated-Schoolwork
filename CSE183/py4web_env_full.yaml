@@ -1,0 +1,16 @@
+name: py4web
+channels:
+  - defaults
+dependencies:
+  - python=3.7
+  - pip:
+    - bottle==0.12.17
+    - gunicorn==19.9.0
+    - pluralize==0.1.5
+    - pydal==20190915.2
+    - pyjwt==1.7.1
+    - requests==2.22.0
+    - threadsafevariable==1.0
+    - tornado==6.0.3
+    - yatl==1.0.11
+

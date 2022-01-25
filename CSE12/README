@@ -1,0 +1,30 @@
+The programs in this folder are from a course named Computer Systems and Assembly Language.
+Every folder has a README that contains instructions on running it.
+Labs 1 and 2 use MMLogic, Labs 3, 4, and 5, use MARS MIPS Simulator
+Below are the learning objectives of each of the labs:
+
+Lab 0 - A personal responsibility agreement
+
+Lab 1 - This lab will introduce you to a schematic entry logic simulation program, Multimedia Logic (MMLogic or MML).
+In this lab you will practice creating truth tables and implementing logic based on those truth tables.
+
+Lab 2 - The objective of this lab is to build a sequential logic circuit and introduce data path.
+
+Lab 3 - This lab will introduce you to the MIPS ISA using MARS.
+You will create a block diagram and pseudocode to help you design the structure of your program.
+Then you will write a program with several nested loops to print a group of ASCII trees to the screen.
+
+Lab 4 - 
+1. Take user input from program arguments.
+2. Parse a numeric character ASCII string to an integer.
+3. Interact with memory.
+4. Interact with MIPS Coprocessor 1 to use the floating point registers and instructions.
+
+Lab 5 -
+1. Utilize arrays
+2. Convert numerical ASCII strings to integers
+3. Convert integers to decimal ASCII strings
+4. Implement functions
+5. Manage data on the stack
+6. Use a test file to test functions
+7. Use macros to automate programming
